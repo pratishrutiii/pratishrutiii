@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    long long num1, num2, merged;
+
+    // Ask user for the two numbers
+    printf("Enter the first number: ");
+    scanf("%lld", &num1);
+    printf("Enter the second number: ");
+    scanf("%lld", &num2);
+
+    // Calculate the number of digits in num2
+    long long temp = num2;
+    int digits = 0;
+    while (temp > 0) {
+        temp /= 10;
+        digits++;
+    }
+
+    // Merge the two numbers
+    merged = num1 * (long long)pow(10, digits) + num2;
+
+    // Display the merged number
+    printf("Merged number: %lld\n", merged);
+
+    return 0;
+}
