@@ -1,0 +1,75 @@
+#include <stdio.h>
+
+// Function to read a matrix
+void readMatrix(int rows, int cols, int matrix[rows][cols]) {
+    printf("Enter elements of the matrix (%dx%d):\n", rows, cols);
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("Element [%d][%d]: ", i, j);
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+}
+
+// Function to print a matrix
+void printMatrix(int rows, int cols, int matrix[rows][cols]) {
+    printf("Matrix (%dx%d):\n", rows, cols);
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+// Function to multiply two matrices
+void multiplyMatrices(int rowsA, int colsA, int matrixA[rowsA][colsA], 
+                      int rowsB, int colsB, int matrixB[rowsB][colsB], 
+                      int result[rowsA][colsB]) {
+    // Initialize the result matrix with zeros
+    for (int i = 0; i < rowsA; i++) {
+        for (int j = 0; j < colsB; j++) {
+            result[i][j] = 0;
+        }
+    }
+
+    // Matrix multiplication logic
+    for (int i = 0; i < rowsA; i++) {
+        for (int j = 0; j < colsB; j++) {
+            for (int k = 0; k < colsA; k++) {
+                result[i][j] += matrixA[i][k] * matrixB[k][j];
+            }
+        }
+    }
+}
+
+int main() {
+    int rowsA, colsA, rowsB, colsB;
+
+    // Input dimensions for the first matrix
+    printf("Enter number of rows and columns for the first matrix: ");
+    scanf("%d %d", &rowsA, &colsA);
+
+    // Input dimensions for the second matrix
+    printf("Enter number of rows and columns for the second matrix: ");
+    scanf("%d %d", &rowsB, &colsB);
+
+    // Check if multiplication is possible
+    if (colsA != rowsB) {
+        printf("Error: Number of columns in the first matrix must be equal to the number of rows in the second matrix.\n");
+        return 1; // Exit the program with an error code
+    }
+
+    // Declare matrices
+    int matrixA[rowsA][colsA], matrixB[rowsB][colsB], result[rowsA][colsB];
+
+    // Read the two matrices
+    readMatrix(rowsA, colsA, matrixA);
+    readMatrix(rowsB, colsB, matrixB);
+
+    // Multiply the matrices
+    multiplyMatrices(rowsA, colsA, matrixA, rowsB, colsB, matrixB, result);
+
+    // Print the result
+    printf("Product of the matrices:\n");
+    printMatrix(rowsA, colsB, result);
