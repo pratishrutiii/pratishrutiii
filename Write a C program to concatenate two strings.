@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+    char str1[100], str2[100], result[200]; // Result can hold both strings
+    int i, j;
+
+    // Input the first string
+    printf("Enter the first string: ");
+    fgets(str1, sizeof(str1), stdin);
+
+    // Input the second string
+    printf("Enter the second string: ");
+    fgets(str2, sizeof(str2), stdin);
+
+    // Copy the first string to the result
+    for (i = 0; str1[i] != '\0'; i++) {
+        // Check for the newline character and stop if found
