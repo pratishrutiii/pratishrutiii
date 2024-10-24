@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+// Function to swap two integers using pointers
+void swap(int *a, int *b) {
+    int temp = *a;  // Store the value at the address pointed to by a
+    *a = *b;        // Assign the value at the address pointed to by b to a
+    *b = temp;     // Assign the stored value to the address pointed to by b
+}
+
+// Function to find the sum of elements in an array using a pointer
+int sumArray(int *arr, int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += *(arr + i);  // Accessing elements using pointer arithmetic
+    }
+    return sum;
+}
+
+int main() {
+    int x = 10, y = 20;
+
+    // Display original values
+    printf("Before swap: x = %d, y = %d\n", x, y);
+    
+    // Swap the values of x and y using pointers
+    swap(&x, &y);  // Pass the addresses of x and y
+
+    // Display swapped values
+    printf("After swap: x = %d, y = %d\n", x, y);
+
+    // Demonstrating pointers with an array
+    int array[] = {1, 2, 3, 4, 5};
+    int size = sizeof(array) / sizeof(array[0]);
+    
+    // Calculate the sum of the array elements using a pointer
+    int total = sumArray(array, size);
+    printf("Sum of array elements: %d\n", total);
+
+    return 0;
+}
