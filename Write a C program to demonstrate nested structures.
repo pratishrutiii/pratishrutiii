@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <string.h>
+
+// Define a structure for Address
+struct Address {
+    char street[100];   // Street name
+    char city[50];      // City name
+    char state[50];     // State name
+    char zip[10];       // Zip code
+};
+
+// Define a structure for Student
+struct Student {
+    char name[50];      // Student's name
+    int age;            // Student's age
+    struct Address addr; // Nested structure for address
+};
+
+// Function to read student information
+void readStudentInfo(struct Student *s) {
+    printf("Enter student's name: ");
+    scanf("%s", s->name); // Read student name
+    printf("Enter student's age: ");
+    scanf("%d", &s->age);  // Read student age
+    
+    // Read address information
+    printf("Enter street: ");
+    scanf(" %[^\n]", s->addr.street); // Read street name
+    printf("Enter city: ");
+    scanf("%s", s->addr.city);         // Read city name
+    printf("Enter state: ");
+    scanf("%s", s->addr.state);        // Read state name
+    printf("Enter zip code: ");
+    scanf("%s", s->addr.zip);          // Read zip code
+}
+
+// Function to display student information
+void displayStudentInfo(const struct Student *s) {
+    printf("\nStudent Information:\n");
+    printf("Name: %s\n", s->name);            // Display student's name
+    printf("Age: %d\n", s->age);               // Display student's age
+    printf("Address:\n");
+    printf("  Street: %s\n", s->addr.street);  // Display street
+    printf("  City: %s\n", s->addr.city);      // Display city
+    printf("  State: %s\n", s->addr.state);    // Display state
+    printf("  Zip Code: %s\n", s->addr.zip);   // Display zip code
+}
+
+int main() {
+    struct Student student; // Declare a Student structure variable
+
+    // Read student information
+    readStudentInfo(&student); // Pass the address of student to the function
+
+    // Display student information
+    displayStudentInfo(&student); // Pass the address of student to the function
+
+    return 0;
+}
