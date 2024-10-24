@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+// Define a union named 'Data'
+union Data {
+    int intValue;
+    float floatValue;
+    char charValue;
+};
+
+int main() {
+    union Data data; // Declare a variable of type Data
+
+    // Assign an integer value to the union
+    data.intValue = 42;
+    printf("Union as Integer: %d\n", data.intValue);
+
+    // Assign a float value to the union
+    data.floatValue = 3.14;
+    printf("Union as Float: %.2f\n", data.floatValue);
+
+    // Assign a character value to the union
+    data.charValue = 'A';
+    printf("Union as Character: %c\n", data.charValue);
+
+    // Accessing previous values after changing the union
+    printf("\nAccessing previous values after changing union members:\n");
+    printf("Union as Integer (after float assignment): %d\n", data.intValue); // Undefined behavior
+    printf("Union as Float (after char assignment): %.2f\n", data.floatValue); // Undefined behavior
+
+    return 0;
+}
