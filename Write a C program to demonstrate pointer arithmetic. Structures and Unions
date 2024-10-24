@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+// Define a structure
+struct Student {
+    char name[50];
+    int age;
+    float grade;
+};
+
+// Define a union
+union Data {
+    int intValue;
+    float floatValue;
+    char charValue;
+};
+
+int main() {
+    // Demonstration of pointer arithmetic with arrays and structures
+
+    // Array of structures
+    struct Student students[3] = {
+        {"Alice", 20, 85.5},
+        {"Bob", 22, 90.0},
+        {"Charlie", 21, 78.0}
+    };
+
+    // Pointer to the array of structures
+    struct Student *ptr = students;
+
+    printf("Student Details using Pointer Arithmetic:\n");
+    for (int i = 0; i < 3; i++) {
+        printf("Name: %s, Age: %d, Grade: %.2f\n", (ptr + i)->name, (ptr + i)->age, (ptr + i)->grade);
+    }
+
+    // Demonstration of union
+    union Data data;
+
+    // Assigning an integer value to the union
+    data.intValue = 10;
+    printf("\nUnion Data (Integer): %d\n", data.intValue);
