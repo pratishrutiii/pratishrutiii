@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+// Function to calculate the sum of digits using recursion
+int sumOfDigits(int n) {
+    // Base case: if the number is 0, the sum of its digits is 0
+    if (n == 0) {
+        return 0;
+    }
+    // Recursive case: add the last digit to the sum of the remaining digits
+    return (n % 10) + sumOfDigits(n / 10);
+}
+
+int main() {
+    int number;
+
+    // Input the number
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    // Ensure the number is non-negative
+    if (number < 0) {
+        printf("Please enter a non-negative integer.\n");
+    } else {
+        // Calculate and display the sum of digits
+        int result = sumOfDigits(number);
+        printf("The sum of the digits of %d is: %d\n", number, result);
+    }
+
+    return 0;
+}
