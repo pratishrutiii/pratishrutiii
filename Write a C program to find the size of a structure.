@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+// Define a structure named 'Person'
+struct Person {
+    char name[50];  // Character array for name
+    int age;        // Integer for age
+    float height;   // Float for height in meters
+};
+
+int main() {
+    // Calculate the size of the structure
+    printf("Size of structure Person: %lu bytes\n", sizeof(struct Person));
+
+    // Optionally, you can also calculate the size of individual members
+    printf("Size of name: %lu bytes\n", sizeof(((struct Person*)0)->name));
+    printf("Size of age: %lu bytes\n", sizeof(((struct Person*)0)->age));
+    printf("Size of height: %lu bytes\n", sizeof(((struct Person*)0)->height));
+
+    return 0;
+}
