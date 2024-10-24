@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+// Define a union named 'Data'
+union Data {
+    int intValue;     // Integer
+    float floatValue; // Float
+    char charValue;   // Character
+};
+
+int main() {
+    // Calculate the size of the union
+    printf("Size of union Data: %lu bytes\n", sizeof(union Data));
+
+    // Optionally, you can also calculate the size of individual members
+    printf("Size of intValue: %lu bytes\n", sizeof(((union Data*)0)->intValue));
+    printf("Size of floatValue: %lu bytes\n", sizeof(((union Data*)0)->floatValue));
+    printf("Size of charValue: %lu bytes\n", sizeof(((union Data*)0)->charValue));
+
+    return 0;
+}
