@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    FILE *file;
+    char filename[100];
+    char c;
+    int line_count = 0;
+
+    // Ask for the filename
+    printf("Enter the filename to open: ");
+    scanf("%s", filename);
+
+    // Open the file in read mode
+    file = fopen(filename, "r");
+
+    // Check if the file was opened successfully
+    if (file == NULL) {
+        printf("Could not open file %s\n", filename);
+        return 1;
+    }
+
+    // Count the number of lines
+    while ((c = fgetc(file)) != EOF) {
+        if (c == '\n') {
+            line_count++;
+        }
+    }
+
+    // Close the file
+    fclose(file);
+
+    // Add 1 to count the last line if the file does not end with a newline
+    if (line_count > 0 || c != '\n') {
+        line_count++;
+    }
+
+    // Print the total number of lines
+    printf("The file %s contains %d lines.\n", filename, line_count);
+
+    return 0;
+}
