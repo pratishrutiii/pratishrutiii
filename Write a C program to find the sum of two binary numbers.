@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <string.h>
+
+// Function to add two binary numbers
+void addBinary(char a[], char b[]) {
+    int i = strlen(a) - 1;  // Index for binary number a
+    int j = strlen(b) - 1;  // Index for binary number b
+    int carry = 0;  // Initialize carry
+    char result[100];  // Array to store the result
+    int k = 0;  // Index for result array
+
+    // Loop until both strings are processed or carry remains
+    while (i >= 0 || j >= 0 || carry == 1) {
+        int bitA = (i >= 0) ? a[i] - '0' : 0;  // Get the bit from a (or 0 if out of range)
+        int bitB = (j >= 0) ? b[j] - '0' : 0;  // Get the bit from b (or 0 if out of range)
+
+        // Binary addition: sum = bitA + bitB + carry
+        int sum = bitA + bitB + carry;
+        result[k++] = (sum % 2) + '0';  // Store the current bit of result
+        carry = sum / 2;  // Update the carry
+
+        i--;  // Move to the previous bit in a
+        j--;  // Move to the previous bit in b
+    }
+
+    // Print the result in reverse order
+    printf("Sum: ");
+    for (int l = k - 1; l >= 0; l--) {
+        printf("%c", result[l]);
+    }
+    printf("\n");
+}
+
+int main() {
+    char a[100], b[100];
+
+    // Input two binary numbers
+    printf("Enter the first binary number: ");
+    scanf("%s", a);
+    printf("Enter the second binary number: ");
+    scanf("%s", b);
+
+    // Add the two binary numbers and print the result
+    addBinary(a, b);
+
+    return 0;
