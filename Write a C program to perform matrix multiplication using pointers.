@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+#define MAX 10  // Maximum size for the matrices
+
+// Function to perform matrix multiplication
+void multiplyMatrices(int (*a)[MAX], int (*b)[MAX], int (*result)[MAX], int rowsA, int colsA, int colsB) {
+    // Initialize the result matrix to zero
+    for (int i = 0; i < rowsA; i++) {
+        for (int j = 0; j < colsB; j++) {
+            result[i][j] = 0; // Set each element to zero
+        }
+    }
+
+    // Multiply matrices a and b
+    for (int i = 0; i < rowsA; i++) {
+        for (int j = 0; j < colsB; j++) {
+            for (int k = 0; k < colsA; k++) {
+                result[i][j] += a[i][k] * b[k][j]; // Perform multiplication and accumulate
+            }
+        }
+    }
+}
+
+// Function to display a matrix
+void displayMatrix(int (*matrix)[MAX], int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", matrix[i][j]); // Print each element
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int a[MAX][MAX], b[MAX][MAX], result[MAX][MAX];
+    int rowsA, colsA, rowsB, colsB;
+
+    // Input dimensions for the first matrix
+    printf("Enter dimensions of the first matrix (rows and columns): ");
+    scanf("%d %d", &rowsA, &colsA);
+
+    // Input elements of the first matrix
+    printf("Enter elements of the first matrix:\n");
+    for (int i = 0; i < rowsA; i++) {
+        for (int j = 0; j < colsA; j++) {
+            printf("Element [%d][%d]: ", i, j
