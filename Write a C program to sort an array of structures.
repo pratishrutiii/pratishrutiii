@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <string.h>
+
+// Define a structure for Student
+struct Student {
+    char name[50]; // Character array for name
+    float marks;   // Float for marks
+};
+
+// Function to sort students based on marks
+void sortStudents(struct Student students[], int n) {
+    struct Student temp; // Temporary variable for swapping
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (students[j].marks > students[j + 1].marks) {
+                // Swap the students if they are in the wrong order
+                temp = students[j];
+                students[j] = students[j + 1];
+                students[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int n;
+
+    // Input the number of students
+    printf("Enter the number of students: ");
+    scanf("%d", &n);
+
+    struct Student students[n]; // Declare an array of Student structures
+
+    // Input student details
+    for (int i = 0; i < n; i++) {
+        printf("Enter name of student %d: ", i + 1);
+        scanf("%s", students[i].name);
+        printf("Enter marks of student %d: ", i + 1);
+        scanf("%f", &students[i].marks);
+    }
+
+    // Sort the students based on marks
+    sortStudents(students, n);
+
+    // Display the sorted student details
+    printf("\nSorted list of students based on marks:\
