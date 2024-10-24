@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+
+// Define a structure named 'Book'
+struct Book {
+    char title[50];
+    char author[50];
+    int year;
+    float price;
+};
+
+int main() {
+    // Initialize a structure variable
+    struct Book book1;
+
+    // Assign values to the members of the structure
+    strcpy(book1.title, "The Great Gatsby");
+    strcpy(book1.author, "F. Scott Fitzgerald");
+    book1.year = 1925;
+    book1.price = 10.99;
+
+    // Display the members of the structure
+    printf("Book Details:\n");
+    printf("Title: %s\n", book1.title);
+    printf("Author: %s\n", book1.author);
+    printf("Year: %d\n", book1.year);
+    printf("Price: $%.2f\n", book1.price);
+
+    return 0;
+}
