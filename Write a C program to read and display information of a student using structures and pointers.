@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+
+// Define a structure for Student
+struct Student {
+    char name[50]; // Character array for name
+    int age;       // Integer for age
+    float marks;   // Float for marks
+};
+
+// Function to read student information using pointers
+void readStudentInfo(struct Student *s) {
+    printf("Enter student's name: ");
+    scanf("%s", s->name); // Using pointer to access structure member
+    printf("Enter student's age: ");
+    scanf("%d", &s->age);  // Using pointer to access structure member
+    printf("Enter student's marks: ");
+    scanf("%f", &s->marks); // Using pointer to access structure member
+}
+
+// Function to display student information using pointers
+void displayStudentInfo(const struct Student *s) {
+    printf("\nStudent Information:\n");
+    printf("Name: %s\n", s->name);   // Using pointer to access structure member
+    printf("Age: %d\n", s->age);      // Using pointer to access structure member
+    printf("Marks: %.2f\n", s->marks); // Using pointer to access structure member
+}
+
+int main() {
+    struct Student student; // Declare a Student structure variable
+
+    // Read student information
+    readStudentInfo(&student); // Pass the address of student to the function
+
+    // Display student information
+    displayStudentInfo(&student); // Pass the address of student to the function
+
+    return 0;
+}
